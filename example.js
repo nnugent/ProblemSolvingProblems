@@ -4,15 +4,15 @@ let word;
 // word = prompt("What would you like to see backwards?");
 // console.log(reverseString(word));
 
-// word = prompt("What phrase would you like me to capitilize the letter of each word?");
-// console.log(capitalizeEachWord(word));
+word = prompt("What phrase would you like me to capitilize the letter of each word?");
+console.log(capitalizeEachWord(word));
 
 // word = prompt("Enter something you think might be a palindrome:");
 // console.log(palindromeTest(word));
 
 //primeNumbers(1, 100);
 
-fibonacci(1);
+// fibonacci();
 // word = prompt("What number do you think is happy?");
 // happyNumber(word);
 // word = prompt("what string do you need compressed?");
@@ -28,13 +28,9 @@ function reverseString(word){
 
 function capitalizeEachWord(string){
 	let newString = "";
-
-	for(let i = 1; i <= string.length; i++){
-		if(string.charAt(i-1) === " " ){
+	for(let i = 0; i < string.length; i++){
+		if (i === 0 || string.charAt(i-1) === " "){
 			newString += string.charAt(i).toUpperCase();
-		}else if(i - 1 === 0){
-			newString += string.charAt(i-1).toUpperCase();
-			newString += string.charAt(i);
 		}else{
 			newString += string.charAt(i);
 		}
@@ -103,7 +99,6 @@ function compressString(string){
 			for(let j = i + 1; j < string.length + 1; j++){
 				if(j === string.length){
 					i = string.length;
-					break;
 				}else if(string[j] === string[i]){
 					timesInARow++;
 				}else {
@@ -119,4 +114,3 @@ function compressString(string){
 	}
 	console.log(compressedString.join(''));
 }
-
