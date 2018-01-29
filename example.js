@@ -4,19 +4,19 @@ let word;
 // word = prompt("What would you like to see backwards?");
 // console.log(reverseString(word));
 
-word = prompt("What phrase would you like me to capitilize the letter of each word?");
-console.log(capitalizeEachWord(word));
+// word = prompt("What phrase would you like me to capitilize the letter of each word?");
+// console.log(capitalizeEachWord(word));
 
 // word = prompt("Enter something you think might be a palindrome:");
 // console.log(palindromeTest(word));
 
-//primeNumbers(1, 100);
+// primeNumbers(1, 100000);
 
 // fibonacci();
 // word = prompt("What number do you think is happy?");
 // happyNumber(word);
-// word = prompt("what string do you need compressed?");
-// compressString(word);
+word = prompt("what string do you need compressed?");
+compressString(word);
 
 function reverseString(word){
 	let reverseWord = "";
@@ -80,8 +80,7 @@ function happyNumber(happyNumber){
 			numSplit[i] = parseInt(numSplit[i]);
 			num += Math.pow(numSplit[i], 2);
 		}
-		num = num.toString();
-		number = num;
+		number = num.toString();
 		console.log(numSplit.toString());
 	}while(number !== "1" && number !== happyNumber);
 	if(number === "1"){
@@ -94,12 +93,12 @@ function happyNumber(happyNumber){
 function compressString(string){
 	let compressedString = [];
 	for(let i = 0; i < string.length; i++){
-		if(string[i] === string[i + 1]){
+		if(string.charAt(i) === string.charAt(i + 1)){
 			let timesInARow = 1;
 			for(let j = i + 1; j < string.length + 1; j++){
 				if(j === string.length){
 					i = string.length;
-				}else if(string[j] === string[i]){
+				}else if(string.charAt(j) === string.charAt(i)){
 					timesInARow++;
 				}else {
 					i = j - 1;
@@ -107,9 +106,9 @@ function compressString(string){
 				}
 			}
 			compressedString.push(timesInARow);
-			compressedString.push(string[i - 1]);
+			compressedString.push(string.charAt(i - 1));
 		} else{
-			compressedString.push(string[i]);
+			compressedString.push(string.charAt(i));
 		}
 	}
 	console.log(compressedString.join(''));
