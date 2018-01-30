@@ -12,11 +12,14 @@ let word;
 
 // primeNumbers(1, 100000);
 
-// fibonacci();
+// word = prompt("Where would you like your sequence to start?");
+// fibonacci(word);
+
 // word = prompt("What number do you think is happy?");
 // happyNumber(word);
-word = prompt("what string do you need compressed?");
-compressString(word);
+
+// word = prompt("what string do you need compressed?");
+// compressString(word);
 
 function reverseString(word){
 	let reverseWord = "";
@@ -48,7 +51,7 @@ function palindromeTest(word){
 }
 
 function primeNumbers(numberOne, numberTwo){
-	primeNumbers = [];
+	let primeNumbers = [];
 	for(let i = numberOne; i <= numberTwo; i++){
 		let factors = 0;
 		for(let j = Math.floor(i/2); j > 1; j--){
@@ -92,24 +95,20 @@ function happyNumber(happyNumber){
 
 function compressString(string){
 	let compressedString = [];
-	for(let i = 0; i < string.length; i++){
-		if(string.charAt(i) === string.charAt(i + 1)){
-			let timesInARow = 1;
-			for(let j = i + 1; j < string.length + 1; j++){
-				if(j === string.length){
-					i = string.length;
-				}else if(string.charAt(j) === string.charAt(i)){
-					timesInARow++;
-				}else {
-					i = j - 1;
-					break;
-				}
-			}
-			compressedString.push(timesInARow);
-			compressedString.push(string.charAt(i - 1));
-		} else{
-			compressedString.push(string.charAt(i));
+	let currentLetter = string.charAt(0);
+	let counter = 0;
+	for(let i = 0; i <= string.length; i++){
+		if(currentLetter === string.charAt(i)){
+			counter++;
+		} else if (counter > 1){
+			compressedString.push(counter);
+			compressedString.push(currentLetter);
+			counter = 1;
+		} else {
+			compressedString.push(currentLetter);
 		}
+		currentLetter = string.charAt(i);
 	}
 	console.log(compressedString.join(''));
 }
+
